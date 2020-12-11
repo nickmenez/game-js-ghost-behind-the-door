@@ -1,0 +1,38 @@
+/* S C R E E N S */
+.startScreen,
+.learnScreen,
+.characterScreen,
+.characterModal,
+.learnRulesScreen,
+.learnEquipmentScreen,
+.learnTarotScreen,
+.creditsScreen,
+.gameoverScreen,
+.creditsScreen,
+.bonusScreen,
+.game,
+.top10Screen,
+.submit-score{
+    background-image: url('../assets/bg_red.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #790c12;
+    overflow: hidden;
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+.startScreen{
+    position: relative;
+}
+
+.game,
+.bonusScreen{
+    background-image: none;
+}

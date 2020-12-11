@@ -1,0 +1,13 @@
+/* R A N D O M  G I F T  */
+.randomGiftItem{
+    position: absolute;
+    left: 50%;
+    width: 45%;
+    margin-left: -23%;
+    z-index: 2;
+    top: 30%;
+}
+.randomGiftItem img{
+    max-width: 100%;
+    object-fit: contain;
+}

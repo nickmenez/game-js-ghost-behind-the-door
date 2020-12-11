@@ -1,0 +1,315 @@
+/* B U T T O N S */
+.btn{
+    position: relative;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    height: 60px;
+    max-height: 60px;
+    min-height: 60px;
+    background: none;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Alagard';
+    color: #000;
+    text-shadow: 0 1px 0 #454545, 0 2px 0 #454545;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    z-index: 4 !important;
+    touch-action: manipulation;
+}
+
+.btn:nth-child(1){
+    animation: btn-jitter2 4s 2s linear infinite;
+}
+.btn:nth-child(2){
+    animation: btn-jitter2 4s linear infinite;
+}
+.btn:nth-child(3){
+    animation: btn-jitter3 4s 1s linear infinite;
+}
+
+.btn img{
+    height: 60px;
+    object-fit: contain;
+}
+
+.btn:hover{
+    color: #444444;
+    text-shadow: 0 1px 0 #000, 0 2px 0 #000;
+}
+
+@keyframes btn-jitter{
+    0%{top:0px;}
+    95%{top:0px;}
+    96%{top:5px;}
+    100%{top:0px;}
+}
+
+@keyframes btn-jitter2{
+    0%{top:0px;}
+    25%{top:0px;}
+    26%{top:5px;}
+    27%{top:0px;}
+    100%{top:0px;}
+}
+
+@keyframes btn-jitter3{
+    0%{top:0px;}
+    65%{top:0px;}
+    66%{top:-5px;}
+    67%{top:0px;}
+    100%{top:0px;}
+}
+
+.back-btn{
+    position: absolute !important;
+    top:20px !important;
+    right: 20px !important;
+    background: none;
+    border: 0;
+    padding: 0;
+    width: 46px;
+    background-image: url('../assets/ui-btn-back.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.back-btn span{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.drip1,
+.drip2,
+.drip3,
+.drip4,
+.drip5,
+.drip6,
+.drip7,
+.drip8,
+.drip9,
+.drip10{
+    z-index: -1;
+}
+
+.drip1::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 4px;
+    height: 0px;
+    position: absolute;
+    top: 11px;
+    left: 22px;
+    z-index: 1;
+    animation: drip1 1s ease-in forwards;
+}
+
+@keyframes drip1{
+    from{height: 0px;}
+    to{height: 120px;}
+}
+
+.drip2::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 4px;
+    height: 0px;
+    position: absolute;
+    top: 15px;
+    right: 77px;
+    z-index: 1;
+    animation: drip2 2s ease-in forwards;
+}
+
+@keyframes drip2{
+    from{height: 0px;}
+    to{height: 170px;}
+}
+
+.drip3::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 4px;
+    height: 0px;
+    position: absolute;
+    top: 12px;
+    right: 84px;
+    z-index: 1;
+    animation: drip1 1s ease-in forwards;
+}
+
+.drip4::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 4px;
+    height: 0px;
+    position: absolute;
+    top: 15px;
+    left: 87px;
+    z-index: 1;
+    animation: drip2 2s ease-in forwards;
+}
+
+.drip5::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 6px;
+    height: 0px;
+    position: absolute;
+    top: 31px;
+    right: 23px;
+    z-index: 1;
+    animation: drip1 1s ease-in forwards;
+}
+
+.drip6::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 6px;
+    height: 0px;
+    position: absolute;
+    top: 15px;
+    left: 50px;
+    z-index: 1;
+    animation: drip2 2s ease-in forwards;
+}
+
+.drip7::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 6px;
+    height: 0px;
+    position: absolute;
+    top: 14px;
+    right: 128px;
+    z-index: 1;
+    animation: drip1 1s ease-in forwards;
+}
+
+.drip8::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 6px;
+    height: 0px;
+    position: absolute;
+    top: 9px;
+    right: 118px;
+    z-index: 1;
+    animation: drip2 2s ease-in forwards;
+}
+
+.drip9::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 6px;
+    height: 0px;
+    position: absolute;
+    top: 37px;
+    right: 67px;
+    z-index: 1;
+    animation: drip1 1s ease-in forwards;
+}
+.drip10::before{
+    content: '';
+    background-image: url('../assets/drip.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    width: 6px;
+    height: 0px;
+    position: absolute;
+    top: 6px;
+    left: 101px;
+    z-index: 1;
+    animation: drip2 2s ease-in forwards;
+}
+
+.drip1:hover:before,
+.drip2:hover:before,
+.drip3:hover:before,
+.drip4:hover:before{
+    background-image: url('../assets/drip_hover.png');
+}
+
+@media only screen and (max-width: 768px) {
+    .back-btn{
+        top: 2px !important;
+        right: 8px !important;
+        width: 30px;
+    }
+    .btn{
+        height: 44px;
+        max-height: 44px;
+        min-height: 44px;
+        font-size: 2rem;
+    }
+    .drip8::before{
+        top: 9px;
+        right: 168px;
+    }
+    .drip10::before{
+        top: 2px;
+        left: 124px;
+    }
+    .drip6::before{
+        left: 55px;
+    }
+    .drip5::before{
+        top: 20px;
+        right: 14px;
+    }
+    .drip3::before{
+        top: 12px;
+        right: 92px;
+    }
+    .drip7::before{
+        right: 122px;
+    }
+}

@@ -1,0 +1,168 @@
+/* S C R E E N  -  L E A R N */
+.learnScreen.active{
+    display: flex;
+    pointer-events: all;
+}
+
+.learnScreen{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+}
+
+.learnScreen .learnWrapper{
+    position: relative;
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.learnScreen .learnWrapper .btn{
+    margin-bottom: 10px;
+}
+
+.learnRulesScreen,
+.learnEquipmentScreen,
+.learnTarotScreen{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #15171a;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    z-index: 8;
+}
+
+.learnRulesScreen.active,
+.learnEquipmentScreen.active,
+.learnTarotScreen.active{
+    display: flex;
+}
+
+.learnRulesScreen h1,
+.learnEquipmentScreen h1,
+.learnTarotScreen h1{
+    margin-top: 40px;
+}
+
+.learnRulesScreen button,
+.learnEquipmentScreen button,
+.learnTarotScreen button{
+    margin-bottom: 40px;
+}
+
+.contentInner{
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.learnEquipmentScreen ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.learnEquipmentScreen ul li{
+    flex:50%;
+    width:50%;
+    max-width:50%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.learnEquipmentScreen ul li img{
+    max-width: 80px;
+    object-fit: contain;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.learnEquipmentScreen ul li p{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 8px;
+    width: 70%;
+}
+
+.learnEquipmentScreen ul li p span{
+    color: #eee;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    text-shadow: 0px 1px 0px #000,0px 2px 0px #000,0px 3px 0px #000;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;  
+}
+
+.learnEquipmentScreen ul li span{
+    display: inline-block;
+}
+
+.learnEquipmentScreen ul li span img{
+    max-width: 40px;
+    object-fit: contain;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.learnEquipmentScreen ul li  span img:last-of-type{
+    margin-bottom: 0;
+}
+
+.learnTarotScreen .contentInner img{
+    max-width: 80%;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .learnScreen{
+        padding: 1rem;
+    }
+    .contentInner{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .learnEquipmentScreen ul li p{
+        width: 100%;
+        min-height: 90px;
+    }
+    
+    .learnEquipmentScreen ul li p span{
+        font-size: .8rem;
+        margin-bottom: 6px;
+    }
+
+}

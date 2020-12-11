@@ -1,0 +1,164 @@
+/* G A M E  -  T A R O T C A R D S */
+.bonusScreen{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    color: #fff;
+    padding-bottom: 50px;
+}
+
+.bonusScreen h1{
+    margin-bottom: 20px;
+}
+
+.bonusCardWrapper{
+    width: 90%;
+    height: 220px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;   
+}
+
+.tarrotcard{
+    margin: 4px;
+    flex: 33.33%;
+    width: 33.33%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    cursor: pointer;
+    animation: tarrotin 850ms forwards ease-in-out;
+    bottom: -450px;
+    box-shadow: 0px 8px 0px rgba(0,0,0,.25);
+    border: 4px solid #454545;
+    transition: all ease 500ms;
+}
+
+@keyframes tarrotin {
+    0% { bottom: -450px;}
+    100% { bottom: 0;}
+}
+
+.tarrotcard::before{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('../assets/pattern1.png');
+    background-position: top left;
+    background-repeat: repeat;
+    background-size: 63px;
+    transition: all 1s 1s ease;
+}
+
+.tarot-hand{
+    position: absolute;
+    bottom:-300px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('../assets/hand.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 1s ease;
+    opacity: 0;
+}
+
+.selected .tarot-hand{
+    bottom:-80px;
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .bonusCardWrapper{
+        width: 90%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .tarrotcard{
+        height: 150px;
+        flex: 30%;
+        width: 30%;
+    }
+
+}
+
+.tarrotcard:nth-child(1){
+    background-image: url('../assets/cards/1.png');
+    animation-delay: 2s;
+    z-index: 6;
+}
+
+.tarrotcard:nth-child(2){
+    background-image: url('../assets/cards/2.png');
+    animation-delay: 2.2s;
+    z-index: 5;
+}
+
+.tarrotcard:nth-child(3){
+    background-image: url('../assets/cards/3.png');
+    animation-delay: 2.4s;
+    z-index: 4;
+}
+
+.tarrotcard:nth-child(4){
+    background-image: url('../assets/cards/4.png');
+    animation-delay: 2.6s;
+    z-index: 3;
+}
+
+.tarrotcard:nth-child(5){
+    background-image: url('../assets/cards/5.png');
+    animation-delay: 2.8s;
+    z-index: 2;
+}
+
+.tarrotcard:nth-child(6){
+    background-image: url('../assets/cards/6.png');
+    animation-delay: 3s;
+    z-index: 1;
+}
+
+.tarrotCoin{
+    position: relative;
+    max-width: 30px;
+}
+
+.tarrotCoin img{
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.tarrotcard .tarrotCoin:nth-child(3) { animation-delay: 0s }
+.tarrotcard .tarrotCoin:nth-child(2) { animation-delay: 300ms }
+.tarrotcard .tarrotCoin:nth-child(1) { animation-delay: 600ms }
+
+.tarrotcard.selected{
+    pointer-events: none;
+    z-index: 7;
+}
+.tarrotcard.unselected{
+    pointer-events: none;
+}

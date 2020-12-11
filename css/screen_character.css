@@ -1,0 +1,116 @@
+/* S C R E E N  -  C H A R A C T E R */
+
+.selectCharacter{
+    max-width: 520px;
+    width: 100%;
+}
+
+.playerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    position: relative;
+    z-index: 5;
+}
+
+.playerContainer li span{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    z-index: 2;
+    font-size: 1.7rem;
+    bottom: -52px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 #000, 0 2px 0 #000, 0 3px 0 #000, 0 4px 0 #000;
+}
+
+.playerContainer span h3{
+    width: auto;
+    margin-bottom: 0;
+}
+
+.playerContainer li{
+    display: flex;
+    cursor: pointer;
+    flex: 25%;
+    width: 25%;
+    max-width: 25%;
+    position: relative;
+    top:0;
+    justify-content: center;
+    align-items: center;
+}
+
+.playerContainer li img{
+    max-width: 100%;
+    object-fit: contain;
+    position: relative;
+    top:0;
+    height: 200px;
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+.playerContainer li.active img{
+    animation: levitate 2s ease-in-out infinite;
+}
+
+@keyframes levitate{
+    0%{top:-20px}
+    50%{top:-40px}
+    100%{top:-20px}
+}
+
+.characterScreen.active{
+    display: flex;
+    pointer-events: all;
+}
+
+.characterScreen{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    color: #fff;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+    padding: 2rem; 
+}
+
+.characterScreen .playerContainer input{
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .playerContainer{
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .playerContainer li{
+        flex: 50%;
+        width: 50%;
+        max-width: 50%;
+    }
+}

@@ -1,0 +1,23 @@
+/* P R O G R E S S  B A R  */
+.progressbar {
+    width: 100%;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+
+.progressbar .inner {
+    height: 6px;
+    animation: progressbar-countdown;
+    animation-duration: 40s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    background: orange;
+}
+
+@keyframes progressbar-countdown {
+    0% {width: 100%;background: orange;}
+    100% {width: 0%;background: darkred;}
+}

@@ -1,0 +1,1008 @@
+/* G A M E  S C R E E N  */
+
+.in-app-browser{
+    height: 100vh !important;
+}
+.in-ios-browser .btn{
+    touch-action: none;
+}
+
+.canvas{
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 800px;
+    max-height: 800px;
+    display: flex;
+    background-color: #000;
+    overflow: hidden;
+    border: 4px solid #333;
+}
+
+.game{
+    width: 100%;
+    display: none;
+    position: relative;
+    align-content: center;
+    height: 100%;
+    pointer-events: none;
+    background-color: #000;
+    z-index: 7;
+    transition: all 1s ease;
+}
+
+.game.active{
+    display: flex;
+    pointer-events: all;
+}
+
+.generate{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height:auto;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 5;
+}
+
+@media only screen and (max-width: 768px) {
+    .canvas{
+        max-width: 100%;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        height: 100vh;
+        border: none;
+    }
+
+    body{
+        overflow: hidden;
+    }
+
+    .generate{
+        height:100%;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    .canvas{
+        height: 86vh; /* iOS only*/
+        overflow: hidden;
+        position: absolute;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* G A M E  -  T I M E R  &  S C O R E */
+.controls{
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 6;
+    padding: 1.3rem;
+}
+.controls .points{
+    display: flex;
+    flex:1;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+.controls .points #timer{
+    position: relative;
+    top:-5px;
+    color: #fff;
+    font-size: 3.8rem;
+    text-shadow: 0 1px 0 #000,
+                 0 2px 0 #000,
+                 0 3px 0 #000,
+                 0 4px 0 #000,
+                 0 5px 0 #000,
+                 0 6px 0 #000,
+                 0 7px 0 #000,
+                 0 8px 0 #000,
+                 0 9px 0 #000;
+    transition: all 1s ease;
+    font-family: "Press Start 2P";
+
+}
+
+
+.ghostmove{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top:6px;
+}
+.ghostmove #roundtimer{
+    margin-bottom: 20px;
+}
+.doors,
+.ghostmove,
+.score span,
+.ghostmove span {
+    position: relative;
+}
+.round,
+.score{
+    font-size: 2rem;
+    font-family: "Press Start 2P";
+    color: #fff;
+    text-shadow: 0 1px 0 #000,
+                 0 2px 0 #000,
+                 0 3px 0 #000,
+                 0 4px 0 #000,
+                 0 5px 0 #000,
+                 0 6px 0 #000;
+}
+.round{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.round span,
+.score span{
+    margin-top: 10px;
+    color: #fff;
+    text-shadow: 0 1px 0 #000,
+                 0 2px 0 #000,
+                 0 3px 0 #000,
+                 0 4px 0 #000,
+                 0 5px 0 #000,
+                 0 6px 0 #000;
+}
+@media only screen and (max-width: 768px) {
+    .controls{
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+    .controls .points{
+        flex: 100%;
+        justify-content: space-between;
+    }
+    .controls .countdown{
+        flex: 100%;
+    }
+    .round,
+    .score{
+        font-size: 1.2rem;
+    }
+    .frames1,
+    .frames2,
+    .frames3,
+    .frames4{
+        background-size: cover;
+    }
+    .controls .points #timer{
+        font-size: 2.5rem;
+    }
+
+}
+
+/* G A M E  -  E L E M E N T S  &  O V E R L A Y S */
+
+.powerup-running .coin,
+.powerup-running .randomGiftItem{
+    display: none;
+}
+.has-ghost .coin,
+.has-ghost .randomGiftItem{
+    display: none;
+}
+.door, .has-ghost, .has-coin{
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    display: flex;
+    flex: 10%;
+    width: 10%;
+    max-width: 10%;
+    justify-content: center;
+    align-content: center;
+}
+.door .emoji,
+.has-ghost .emoji,
+.has-coin .emoji,
+.opened .emoji{
+    position: relative;
+    z-index: 4;
+    opacity: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    transition: all 1.2s ease;
+}
+.door .emoji img,
+.has-ghost .emoji img,
+.has-coin .emoji img,
+.opened .emoji img{
+    transform-origin: left;
+    transition: all 1.2s ease;
+}
+.opened .emoji{
+    z-index: 0 !important;
+}
+.emoji img{
+    max-width: 60%;
+    object-fit: contain;
+}
+.door{
+    margin-bottom: 12px;
+}
+.opened{
+    position: relative;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex: 10%;
+    width: 10%;
+    max-width: 10%;
+    margin-bottom: 12px;
+    /* background-image: url('../assets/dooropen.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; */
+}
+.opened .emoji img{
+    transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-90deg);
+    left: -6px;
+    opacity: 1;
+    pointer-events: none;
+    animation: door-fade 1.2s linear forwards;
+}
+
+.opened.is-locked .emoji::before{
+    opacity: 0 !important;
+}
+
+
+@keyframes door-fade {
+    0% {opacity: 1;}
+    99% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+
+
+
+
+
+
+
+
+.ghost{
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    margin-left: -25%;
+    z-index: 3;
+    top: 9%;
+    transition: all ease 2s;
+}
+.ghost img{
+    max-width: 100%;
+    object-fit: contain;
+    position: relative;
+    transition: all ease 2s;
+    
+}
+.possessed img{
+    max-width: 500%;
+    z-index: 20;
+}
+.possessed{
+    left: -60%;
+    top:-140%;
+    z-index: 10;
+}
+.coin{
+    position: absolute;
+    left: 50%;
+    width: 30%;
+    margin-left: -14%;
+    z-index: 2;
+    top: 35%;
+    overflow: hidden;
+}
+.coin img{
+    max-width: 100%;
+    object-fit: contain;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    from {
+      transform:rotateY(0);
+    }
+    to {
+      transform:rotateY(360deg);
+    }
+  }
+
+
+
+
+
+.is-locked{
+    position: relative;
+    pointer-events: none !important;
+}
+
+.is-locked .emoji::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    top: 0;
+    background-image: url(../assets/padlock.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    width: 100%;
+    height: 100%;
+ 
+}
+
+@media only screen and (max-width: 768px) {
+    .door, .has-ghost, .has-coin{
+        flex: 14%;
+        width: 14%;
+        max-width: 14%;
+    }
+    .opened{
+        flex: 14%;
+        width: 14%;
+        max-width: 14%;
+    }
+    .is-locked .emoji::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        z-index: 10;
+        top: 0;
+        background-size: 40px;
+        width: 100%;
+        height: 100%;
+     
+    }
+}
+
+/* G A M E  -  T E R M I N A L */
+.controlTerminal{
+    width: 100%;
+    height: auto;
+    display: none;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 7;
+    pointer-events: none;
+    background: #444;
+    background-image: url('../assets/pattern1.png');
+    background-position: 50px 50px;
+    background-repeat: repeat;
+    background-size: 80px;
+    border-top: solid 4px #333;
+    touch-action: none;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+.controlTerminal.active{
+    display: flex;
+    pointer-events: all;
+}
+
+.coin-minus{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: coin-minus 2s forwards;
+    pointer-events: none;
+    opacity: 0;
+}
+
+@keyframes coin-minus {
+    1% { opacity: 1; top: 0px; }
+    100% { opacity: 0; top: -500px; }
+}
+
+.coin-minus:nth-child(1){ animation-delay: 300ms;}
+.coin-minus:nth-child(2){ animation-delay: 600ms;}
+
+
+.playerInfo{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-right: 5px;
+}
+.playerInfo #player,
+.playerInfo .coins{
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100px;
+    display: flex;
+}
+.playerInfo #player{
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80px;
+    overflow: hidden;
+}
+.playerInfo .coins{
+    max-width: 40px;
+    position: relative;
+}
+.playerInfo .coins .coincount{
+    position: absolute;
+    font-family: "Press Start 2P";
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+    text-shadow: 0 1px 0 #000,
+    0 2px 0 #000,
+    0 3px 0 #000,
+    0 4px 0 #000,
+    0 5px 0 #000,
+    0 6px 0 #000;
+    font-size: 2rem;
+    letter-spacing: -2px;
+}
+
+
+
+
+.playerInfo .coins img{
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.playerInfo #playerId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    position: relative;
+    bottom:-15px;
+}
+.playerInfo #playerId img{
+    max-width: 100%;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.equipment{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    color: #fff;
+    justify-content: flex-start;
+    flex:1;
+}
+.equipment .powerup{
+    width: 100px;
+    height: 100px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    cursor: pointer;
+    border-right: 2px solid #333;
+    border-left: solid 2px #555;
+}
+.equipment .powerup:first-of-type{
+    border-left: 0;
+}
+.equipment .powerup:last-of-type{
+    border-right: 2px solid #333;
+    -webkit-box-shadow: 2px 0px 0px 0px #555;
+    -moz-box-shadow: 2px 0px 0px 0px #555;
+    box-shadow: 2px 0px 0px 0px #555;
+}
+.equipment .powerup .equipmentImg{
+    width: 90%;
+    height: 90%;
+}
+.equipment .powerup .equipmentImg img{
+    max-width: 100%;
+    object-fit: contain;
+}
+.equipment .powerup  .cost{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 1rem;
+    display: none; /* flex */
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #222;
+    background-image: url('../assets/coin.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+
+
+.disabled-equipment{
+    opacity: 1;
+    pointer-events: none;
+    position: relative;
+}
+.thermal.disabled-equipment::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,51,51,.65);
+    background-image: url('../assets/coinx3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.k2meter.disabled-equipment::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,51,51,.65);
+    background-image: url('../assets/coinx2.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.crystalball.disabled-equipment::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,51,51,.65);
+    background-image: url('../assets/coinx1.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+.key.disabled-equipment::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,51,51,.65);
+    background-image: url('../assets/coinx1.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    .playerInfo{
+        margin-right: 0;
+        position: relative;
+        right: -8px;
+    }
+    .equipment .powerup  .cost{
+        padding: .5rem;
+    }
+    .equipment .powerup{
+        width: 60px;
+        height: 60px;
+    }
+    .playerInfo .coins{
+        max-width: 30px;
+        right: -6px;
+    }
+    .playerInfo .coins .coincount{
+        left: -140%;
+        font-size: 1.4rem;
+    }
+}
+
+
+.equipment .powerup .inventoryThermal,
+.equipment .powerup  .inventoryCrystal,
+.equipment .powerup  .inventoryK2{
+    display: none;
+
+}
+
+
+.fadeoutOverlay{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    animation: fadeoutOverlay 2s forwards;
+    background-color: #000;
+    color: #fff;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .fadeoutOverlay{
+        font-size: 2rem;
+    }
+}
+@keyframes fadeoutOverlay {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+
+
+#possessedOverlay{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #3a607e;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+#possessedOverlay.active{
+    opacity: 1;
+    pointer-events: all;
+    mix-blend-mode: exclusion;
+    animation: danger 1s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+#powerupOverlay{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+    mix-blend-mode: exclusion;
+}
+#powerupOverlay.active{
+    animation: thermal 1s forwards;
+}
+
+
+#danger{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #3a607e;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+#danger.active{
+    animation: danger 1s forwards;
+}
+
+.k2-low::before{
+    content: '';
+    position: absolute;
+    z-index: 7;
+    top: 3px;
+    right:23px;
+    left: auto;
+    background: url('../assets/k2_green.png') repeat;
+    width: 54%;
+    height: 95%;
+    pointer-events: none;
+    animation: flicker1 1s infinite;
+    
+}
+@keyframes flicker1 {
+    0% { opacity: 0; }
+    10% { opacity: .4; }
+    20% { opacity: 0; }
+    30% { opacity: .2; }
+    40% { opacity: 0; }
+    50% { opacity: .1; }
+    60% { opacity: .4;  }
+    70% { opacity: .2; }
+    80% { opacity: .1; }
+    90% { opacity: .4; }
+    100% { opacity: 0;  }
+}
+
+.k2-medium::before{
+    content: '';
+    position: absolute;
+    z-index: 7;
+    top: 3px;
+    right:23px;
+    left: auto;
+    background: url('../assets/k2_orange.png') repeat;
+    width: 54%;
+    height: 95%;
+    pointer-events: none;
+    animation: flicker2 1s infinite;
+    
+}
+@keyframes flicker2 {
+    0% { opacity: .1; }
+    10% { opacity: .4; }
+    20% { opacity: 0; }
+    30% { opacity: .4; }
+    40% { opacity: .2; }
+    50% { opacity: 0; }
+    60% { opacity: .4;  }
+    70% { opacity: .1; }
+    80% { opacity: .2; }
+    90% { opacity: 0; }
+    100% { opacity: .4;  }
+}
+
+
+.k2-hot::before{
+    content: '';
+    position: absolute;
+    z-index: 7;
+    top: 3px;
+    right:23px;
+    left: auto;
+    background: url('../assets/k2_red.png') repeat;
+    width: 54%;
+    height: 95%;
+    pointer-events: none;
+    animation: flicker3 1s infinite;
+}
+@keyframes flicker3 {
+    0% { opacity: 0; }
+    10% { opacity: .3; }
+    20% { opacity: .4; }
+    30% { opacity: .3; }
+    40% { opacity: 0; }
+    50% { opacity: .4; }
+    60% { opacity: .4;  }
+    70% { opacity: .2; }
+    80% { opacity: .4; }
+    90% { opacity: 0; }
+    100% { opacity: .1;  }
+}
+
+.opened.k2-low::before,
+.opened.k2-medium::before,
+.opened.k2-hot::before{
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .k2-hot::before,
+    .k2-medium::before,
+    .k2-low::before{
+        top: 1px;
+        right: 13px;
+    }
+}
+
+
+.has-prediction::before{
+    content: '';
+    position: absolute;
+    left: 17%;
+    margin-left: -14%;
+    z-index: 7;
+    top: 0;
+    background-image: url('../assets/prediction.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    animation: prediction 2s forwards;
+    pointer-events: none;
+    
+}
+
+@keyframes prediction {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg);}
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+  }
+
+
+
+
+@keyframes danger {
+    0% { opacity: 0; background-color: #3a607e;}
+    25% { opacity: 1; background-color: #eeeeee;}
+    50% { opacity: 0; background-color: #3a607e;}
+    75% { opacity: 1; background-color: #3a607e;}
+    100% { opacity: 0; background-color: #eeeeee;}
+}
+
+
+@keyframes thermal {
+    0% { opacity: 0; background: orange; }
+    25% { opacity: 1; background: purple;}
+    50% { opacity: 0; background: red; }
+    75% { opacity: 1; background: orange;}
+    100% { opacity: 0; background: purple;}
+}
+
+
+
+.powerup-blink{
+    animation: blink 1s forwards;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: .3; }
+    100% { opacity: 1; }
+}
+
+
+
+
+
+.coin-collected{
+    animation: coin-collected 1s forwards;
+    pointer-events: none;
+    z-index: 4;
+}
+
+@keyframes coin-collected {
+    0% { opacity: 1; top: 35px; }
+    100% { opacity: 0; top: 500px; }
+}
+
+.coin-collected-tarot{
+    animation: coin-collected-tarot 1s forwards;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+}
+
+@keyframes coin-collected-tarot {
+    0% { opacity: 1; top: 35px; }
+    100% { opacity: 0; top: 500px; }
+}
+
+.coin-collected-tarot:nth-child(1){
+    animation-delay: 300ms;
+}
+.coin-collected-tarot:nth-child(2){
+    animation-delay: 600ms;
+}
+.coin-collected-tarot:nth-child(3){
+    animation-delay: 900ms;
+}
+
+
+
+
+
+
+
+
+
+.gift-collected{
+    animation: gift-collected 1s forwards;
+    pointer-events: none;
+}
+
+@keyframes gift-collected {
+    0% { opacity: 1; top: 35px; }
+    100% { opacity: 0; top: -500px; }
+}
+
+
+@keyframes flicker {
+    0% { opacity: .8; }
+    50% { opacity: 1; }
+    100% { opacity: .8; }
+}
+
+
+
+
+
+@media only screen and (max-width: 450px) {
+    .equipment .powerup{
+        width: 25%;
+        flex: 25%;
+        height: 100px;
+    }
+
+    .equipment .powerup .equipmentImg{
+        height: auto;
+        overflow: hidden;
+    }
+    .equipment{
+        margin-right: 55px;
+    }
+    #possessedOverlay.active{
+        font-size: 1.8rem;
+    }
+    
+}
