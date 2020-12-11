@@ -8,7 +8,7 @@ $date = date('m/d/Y h:i:s a', time());
 $servername = "localhost";
 $username = "username";
 $password = "password";
-$dbname = "database_name";
+$dbname = "database";
 
 // Create connection
 $conn = new mysqli($servername,$username,$password,$dbname);
